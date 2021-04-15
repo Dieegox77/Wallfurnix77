@@ -18,29 +18,34 @@ class CustomEvents(QObject):
 
 
 class Ui_WallFurniUI(QWidget):
+
     def __init__(self, WallFurni):
         super().__init__()
         self.__signal = CustomEvents()
         self.__signal.refreshEvent.connect(self.refresh)
         self.__wall_furni = WallFurni
 
+
     def setupUi(self, WallFurniUI):
+        WallFurniUI.setWindowFlags(
+            QtCore.Qt.WindowStaysOnTopHint
+            )
         WallFurniUI.setObjectName("WallFurniUI")
         WallFurniUI.resize(292, 303)
         WallFurniUI.setAutoFillBackground(False)
         self.centralwidget = QtWidgets.QWidget(WallFurniUI)
         self.centralwidget.setObjectName("centralwidget")
         self.label_x = QtWidgets.QLabel(self.centralwidget)
-        self.label_x.setGeometry(QtCore.QRect(176, 100, 20, 31))
+        self.label_x.setGeometry(QtCore.QRect(176, 50, 20, 31))
         self.label_x.setObjectName("label_x")
         self.label_z = QtWidgets.QLabel(self.centralwidget)
-        self.label_z.setGeometry(QtCore.QRect(26, 100, 20, 31))
+        self.label_z.setGeometry(QtCore.QRect(26, 50, 20, 31))
         self.label_z.setObjectName("label_z")
         self.label_d = QtWidgets.QLabel(self.centralwidget)
-        self.label_d.setGeometry(QtCore.QRect(26, 180, 20, 31))
+        self.label_d.setGeometry(QtCore.QRect(26, 130, 20, 31))
         self.label_d.setObjectName("label_d")
         self.label_y = QtWidgets.QLabel(self.centralwidget)
-        self.label_y.setGeometry(QtCore.QRect(176, 180, 20, 31))
+        self.label_y.setGeometry(QtCore.QRect(176, 130, 20, 31))
         self.label_y.setObjectName("label_y")
         self.input_z = QtWidgets.QTextEdit(self.centralwidget)
         self.input_z.setGeometry(QtCore.QRect(50, 70, 41, 31))
@@ -54,41 +59,99 @@ class Ui_WallFurniUI(QWidget):
         self.input_d = QtWidgets.QTextEdit(self.centralwidget)
         self.input_d.setGeometry(QtCore.QRect(50, 150, 41, 31))
         self.input_d.setObjectName("input_d")
+
         self.btn_add_x = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_add_x.setGeometry(QtCore.QRect(240, 70, 31, 31))
+        self.btn_add_x.setGeometry(QtCore.QRect(241, 69, 31, 21))
         self.btn_add_x.setObjectName("btn_add_x")
+        self.btn_add10_x = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_add10_x.setGeometry(QtCore.QRect(241, 90, 31, 21))
+        self.btn_add10_x.setObjectName("btn_add10_x")
+        self.btn_add100_x = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_add100_x.setGeometry(QtCore.QRect(241, 111, 31, 21))
+        self.btn_add100_x.setObjectName("btn_add100_x")
+
         self.btn_sub_x = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_sub_x.setGeometry(QtCore.QRect(170, 70, 31, 31))
+        self.btn_sub_x.setGeometry(QtCore.QRect(169, 69, 31, 21))
         self.btn_sub_x.setObjectName("btn_sub_x")
+        self.btn_sub10_x = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_sub10_x.setGeometry(QtCore.QRect(169, 90, 31, 21))
+        self.btn_sub10_x.setObjectName("btn_sub10_x")
+        self.btn_sub100_x = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_sub100_x.setGeometry(QtCore.QRect(169, 111, 31, 21))
+        self.btn_sub100_x.setObjectName("btn_sub100_x")
+
         self.btn_add_y = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_add_y.setGeometry(QtCore.QRect(240, 150, 31, 31))
+        self.btn_add_y.setGeometry(QtCore.QRect(241, 149, 31, 21))
         self.btn_add_y.setObjectName("btn_add_y")
+        self.btn_add10_y = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_add10_y.setGeometry(QtCore.QRect(241, 170, 31, 21))
+        self.btn_add10_y.setObjectName("btn_add10_y")
+        self.btn_add100_y = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_add100_y.setGeometry(QtCore.QRect(241, 191, 31, 21))
+        self.btn_add100_y.setObjectName("btn_add100_y")
+
         self.btn_sub_y = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_sub_y.setGeometry(QtCore.QRect(170, 150, 31, 31))
+        self.btn_sub_y.setGeometry(QtCore.QRect(169, 149, 31, 21))
         self.btn_sub_y.setObjectName("btn_sub_y")
+        self.btn_sub10_y = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_sub10_y.setGeometry(QtCore.QRect(169, 170, 31, 21))
+        self.btn_sub10_y.setObjectName("btn_sub10_y")
+        self.btn_sub100_y = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_sub100_y.setGeometry(QtCore.QRect(169, 191, 31, 21))
+        self.btn_sub100_y.setObjectName("btn_sub100_y")
+
+
         self.btn_sub_d = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_sub_d.setGeometry(QtCore.QRect(20, 150, 31, 31))
+        self.btn_sub_d.setGeometry(QtCore.QRect(19, 149, 31, 21))
         self.btn_sub_d.setObjectName("btn_sub_d")
+        self.btn_sub10_d = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_sub10_d.setGeometry(QtCore.QRect(19, 170, 31, 21))
+        self.btn_sub10_d.setObjectName("btn_sub10_d")
+        self.btn_sub100_d = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_sub100_d.setGeometry(QtCore.QRect(19, 191, 31, 21))
+        self.btn_sub100_d.setObjectName("btn_sub100_d")
+
         self.btn_add_d = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_add_d.setGeometry(QtCore.QRect(90, 150, 31, 31))
+        self.btn_add_d.setGeometry(QtCore.QRect(91, 149, 31, 21))
         self.btn_add_d.setObjectName("btn_add_d")
+        self.btn_add10_d = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_add10_d.setGeometry(QtCore.QRect(91, 170, 31, 21))
+        self.btn_add10_d.setObjectName("btn_add10_d")
+        self.btn_add100_d = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_add100_d.setGeometry(QtCore.QRect(91, 191, 31, 21))
+        self.btn_add100_d.setObjectName("btn_add100_d")
+
         self.btn_add_z = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_add_z.setGeometry(QtCore.QRect(90, 70, 31, 31))
+        self.btn_add_z.setGeometry(QtCore.QRect(91, 69, 31, 21))
         self.btn_add_z.setObjectName("btn_add_z")
+        self.btn_add10_z = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_add10_z.setGeometry(QtCore.QRect(91, 90, 31, 21))
+        self.btn_add10_z.setObjectName("btn_add10_z")
+        self.btn_add100_z = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_add100_z.setGeometry(QtCore.QRect(91, 111, 31, 21))
+        self.btn_add100_z.setObjectName("btn_add100_z")
+
         self.btn_sub_z = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_sub_z.setGeometry(QtCore.QRect(20, 70, 31, 31))
+        self.btn_sub_z.setGeometry(QtCore.QRect(19, 69, 31, 21))
         self.btn_sub_z.setObjectName("btn_sub_z")
+        self.btn_sub10_z = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_sub10_z.setGeometry(QtCore.QRect(19, 90, 31, 21))
+        self.btn_sub10_z.setObjectName("btn_sub10_z")
+        self.btn_sub100_z = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_sub100_z.setGeometry(QtCore.QRect(19, 111, 31, 21))
+        self.btn_sub100_z.setObjectName("btn_sub100_z")
+
         self.btn_apply_z = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_apply_z.setGeometry(QtCore.QRect(40, 100, 81, 31))
+        self.btn_apply_z.setGeometry(QtCore.QRect(50, 101, 41, 31))
         self.btn_apply_z.setObjectName("btn_apply_z")
         self.btn_apply_x = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_apply_x.setGeometry(QtCore.QRect(190, 100, 81, 31))
+        self.btn_apply_x.setGeometry(QtCore.QRect(200, 101, 41, 31))
         self.btn_apply_x.setObjectName("btn_apply_x")
         self.btn_apply_y = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_apply_y.setGeometry(QtCore.QRect(190, 180, 81, 31))
+        self.btn_apply_y.setGeometry(QtCore.QRect(200, 181, 41, 31))
         self.btn_apply_y.setObjectName("btn_apply_y")
         self.btn_apply_d = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_apply_d.setGeometry(QtCore.QRect(40, 180, 81, 31))
+        self.btn_apply_d.setGeometry(QtCore.QRect(50, 181, 41, 31))
         self.btn_apply_d.setObjectName("btn_apply_d")
         self.radio_left = QtWidgets.QRadioButton(self.centralwidget)
         self.radio_left.setGeometry(QtCore.QRect(190, 250, 31, 20))
@@ -97,33 +160,66 @@ class Ui_WallFurniUI(QWidget):
         self.radio_right.setGeometry(QtCore.QRect(240, 250, 31, 20))
         self.radio_right.setObjectName("radio_right")
         self.label_orientation = QtWidgets.QLabel(self.centralwidget)
-        self.label_orientation.setGeometry(QtCore.QRect(20, 250, 71, 16))
+        self.label_orientation.setGeometry(QtCore.QRect(203, 235, 71, 16))
         self.label_orientation.setObjectName("label_orientation")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(10, 20, 121, 21))
         self.label.setObjectName("label")
         self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
-        self.textBrowser.setGeometry(QtCore.QRect(130, 20, 141, 21))
+        self.textBrowser.setGeometry(QtCore.QRect(130, 20, 141, 23))
         self.textBrowser.setObjectName("textBrowser")
         WallFurniUI.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(WallFurniUI)
         self.statusbar.setObjectName("statusbar")
         WallFurniUI.setStatusBar(self.statusbar)
 
+        self.btn_reset = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_reset.setGeometry(QtCore.QRect(20, 240, 61, 31))
+        self.btn_reset.setObjectName("reset")
+
+        self.btn_last = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_last.setGeometry(QtCore.QRect(82, 240, 71, 31))
+        self.btn_last.setObjectName("last")
+
+        self.btn_reset.clicked.connect(self.reset)
+
+        self.btn_last.clicked.connect(self.move_to_last)
+
         self.btn_apply_z.clicked.connect(self.apply_z)
         self.btn_apply_x.clicked.connect(self.apply_x)
         self.btn_apply_d.clicked.connect(self.apply_d)
         self.btn_apply_y.clicked.connect(self.apply_y)
+
 
         self.btn_sub_z.clicked.connect(self.sub_z)
         self.btn_sub_x.clicked.connect(self.sub_x)
         self.btn_sub_d.clicked.connect(self.sub_d)
         self.btn_sub_y.clicked.connect(self.sub_y)
 
+        self.btn_sub10_z.clicked.connect(self.sub10_z)
+        self.btn_sub10_x.clicked.connect(self.sub10_x)
+        self.btn_sub10_d.clicked.connect(self.sub10_d)
+        self.btn_sub10_y.clicked.connect(self.sub10_y)
+
+        self.btn_sub100_z.clicked.connect(self.sub100_z)
+        self.btn_sub100_x.clicked.connect(self.sub100_x)
+        self.btn_sub100_d.clicked.connect(self.sub100_d)
+        self.btn_sub100_y.clicked.connect(self.sub100_y)
+
         self.btn_add_z.clicked.connect(self.add_z)
         self.btn_add_x.clicked.connect(self.add_x)
         self.btn_add_d.clicked.connect(self.add_d)
         self.btn_add_y.clicked.connect(self.add_y)
+
+        self.btn_add10_z.clicked.connect(self.add10_z)
+        self.btn_add10_x.clicked.connect(self.add10_x)
+        self.btn_add10_d.clicked.connect(self.add10_d)
+        self.btn_add10_y.clicked.connect(self.add10_y)
+
+        self.btn_add100_z.clicked.connect(self.add100_z)
+        self.btn_add100_x.clicked.connect(self.add100_x)
+        self.btn_add100_d.clicked.connect(self.add100_d)
+        self.btn_add100_y.clicked.connect(self.add100_y)
 
         self.radio_left.toggled.connect(self.check_left)
         self.radio_right.toggled.connect(self.check_right)
@@ -131,9 +227,11 @@ class Ui_WallFurniUI(QWidget):
         self.retranslateUi(WallFurniUI)
         QtCore.QMetaObject.connectSlotsByName(WallFurniUI)
 
+
+
     def retranslateUi(self, WallFurniUI):
         _translate = QtCore.QCoreApplication.translate
-        WallFurniUI.setWindowTitle(_translate("WallFurniUI", "WallFurni by kSlide"))
+        WallFurniUI.setWindowTitle(_translate("WallFurniUI", "WallFurnix77"))
         self.label_x.setText(_translate("WallFurniUI", "X"))
         self.label_z.setText(_translate("WallFurniUI", "Z"))
         self.label_d.setText(_translate("WallFurniUI", "D"))
@@ -146,12 +244,33 @@ class Ui_WallFurniUI(QWidget):
         self.btn_add_d.setText(_translate("WallFurniUI", "+"))
         self.btn_add_z.setText(_translate("WallFurniUI", "+"))
         self.btn_sub_z.setText(_translate("WallFurniUI", "-"))
-        self.btn_apply_z.setText(_translate("WallFurniUI", "Apply"))
-        self.btn_apply_x.setText(_translate("WallFurniUI", "Apply"))
-        self.btn_apply_y.setText(_translate("WallFurniUI", "Apply"))
-        self.btn_apply_d.setText(_translate("WallFurniUI", "Apply"))
+
+        self.btn_add10_x.setText(_translate("WallFurniUI", "++"))
+        self.btn_sub10_x.setText(_translate("WallFurniUI", "--"))
+        self.btn_add10_y.setText(_translate("WallFurniUI", "++"))
+        self.btn_sub10_y.setText(_translate("WallFurniUI", "--"))
+        self.btn_sub10_d.setText(_translate("WallFurniUI", "--"))
+        self.btn_add10_d.setText(_translate("WallFurniUI", "++"))
+        self.btn_add10_z.setText(_translate("WallFurniUI", "++"))
+        self.btn_sub10_z.setText(_translate("WallFurniUI", "--"))
+
+        self.btn_add100_x.setText(_translate("WallFurniUI", "+++"))
+        self.btn_sub100_x.setText(_translate("WallFurniUI", "---"))
+        self.btn_add100_y.setText(_translate("WallFurniUI", "+++"))
+        self.btn_sub100_y.setText(_translate("WallFurniUI", "---"))
+        self.btn_sub100_d.setText(_translate("WallFurniUI", "---"))
+        self.btn_add100_d.setText(_translate("WallFurniUI", "+++"))
+        self.btn_add100_z.setText(_translate("WallFurniUI", "+++"))
+        self.btn_sub100_z.setText(_translate("WallFurniUI", "---"))
+
+        self.btn_apply_z.setText(_translate("WallFurniUI", "Set"))
+        self.btn_apply_x.setText(_translate("WallFurniUI", "Set"))
+        self.btn_apply_y.setText(_translate("WallFurniUI", "Set"))
+        self.btn_apply_d.setText(_translate("WallFurniUI", "Set"))
         self.radio_left.setText(_translate("WallFurniUI", "L"))
         self.radio_right.setText(_translate("WallFurniUI", "R"))
+        self.btn_reset.setText(_translate("WallFurniUI", "Reset!"))
+        self.btn_last.setText(_translate("WallFurniUI", "Move to last"))
         self.label_orientation.setText(_translate("WallFurniUI", "Orientation"))
         self.label.setText(_translate("WallFurniUI", "Current furni id"))
         self.textBrowser.setText(_translate("WallFurniUI", "None"))
@@ -167,40 +286,94 @@ class Ui_WallFurniUI(QWidget):
         self.__signal.refreshEvent.emit()
 
     def apply_z(self):
-        self.__wall_furni.set_z(int(self.input_z.toPlainText()))
+        self.__wall_furni.set_z(int(self.input_z.toPlainText()) + 0)
 
     def apply_x(self):
-        self.__wall_furni.set_x(int(self.input_x.toPlainText()))
+        self.__wall_furni.set_x(int(self.input_x.toPlainText()) + 0)
 
     def apply_d(self):
-        self.__wall_furni.set_depth(int(self.input_d.toPlainText()))
+        self.__wall_furni.set_depth(int(self.input_d.toPlainText()) + 0)
 
     def apply_y(self):
-        self.__wall_furni.set_y(int(self.input_z.toPlainText()))
+        self.__wall_furni.set_y(int(self.input_y.toPlainText()) + 0)
 
     def add_z(self):
         self.__wall_furni.set_z(int(self.input_z.toPlainText()) + 1)
 
+    def add10_z(self):
+        self.__wall_furni.set_z(int(self.input_z.toPlainText()) + 10)
+
+    def add100_z(self):
+        self.__wall_furni.set_z(int(self.input_z.toPlainText()) + 100)
+
     def add_x(self):
         self.__wall_furni.set_x(int(self.input_x.toPlainText()) + 1)
+
+    def add10_x(self):
+        self.__wall_furni.set_x(int(self.input_x.toPlainText()) + 10)
+
+    def add100_x(self):
+        self.__wall_furni.set_x(int(self.input_x.toPlainText()) + 100)
 
     def add_d(self):
         self.__wall_furni.set_depth(int(self.input_d.toPlainText()) + 1)
 
+    def add10_d(self):
+        self.__wall_furni.set_depth(int(self.input_d.toPlainText()) + 10)
+
+    def add100_d(self):
+        self.__wall_furni.set_depth(int(self.input_d.toPlainText()) + 100)
+
     def add_y(self):
         self.__wall_furni.set_y(int(self.input_y.toPlainText()) + 1)
+
+    def add10_y(self):
+        self.__wall_furni.set_y(int(self.input_y.toPlainText()) + 10)
+
+    def add100_y(self):
+        self.__wall_furni.set_y(int(self.input_y.toPlainText()) + 100)
 
     def sub_z(self):
         self.__wall_furni.set_z(int(self.input_z.toPlainText()) - 1)
 
+    def sub10_z(self):
+        self.__wall_furni.set_z(int(self.input_z.toPlainText()) - 10)
+
+    def sub100_z(self):
+        self.__wall_furni.set_z(int(self.input_z.toPlainText()) - 100)
+
     def sub_x(self):
         self.__wall_furni.set_x(int(self.input_x.toPlainText()) - 1)
+
+    def sub10_x(self):
+        self.__wall_furni.set_x(int(self.input_x.toPlainText()) - 10)
+
+    def sub100_x(self):
+        self.__wall_furni.set_x(int(self.input_x.toPlainText()) - 100)
 
     def sub_d(self):
         self.__wall_furni.set_depth(int(self.input_d.toPlainText()) - 1)
 
+    def sub10_d(self):
+        self.__wall_furni.set_depth(int(self.input_d.toPlainText()) - 10)
+
+    def sub100_d(self):
+        self.__wall_furni.set_depth(int(self.input_d.toPlainText()) - 100)
+
     def sub_y(self):
         self.__wall_furni.set_y(int(self.input_y.toPlainText()) - 1)
+
+    def sub10_y(self):
+        self.__wall_furni.set_y(int(self.input_y.toPlainText()) - 10)
+
+    def sub100_y(self):
+        self.__wall_furni.set_y(int(self.input_y.toPlainText()) - 100)
+
+    def reset(self):
+        self.__wall_furni.reset()
+
+    def move_to_last(self):
+        self.__wall_furni.move_to_last()
 
     def check_left(self):
         radioButton = self.sender()
@@ -211,4 +384,3 @@ class Ui_WallFurniUI(QWidget):
         radioButton = self.sender()
         if radioButton.isChecked():
             self.__wall_furni.set_orientation("r")
-

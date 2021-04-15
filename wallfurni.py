@@ -8,13 +8,22 @@ from PyQt5.QtWidgets import QApplication
 from g_python.hdirection import Direction
 from g_python.hmessage import HMessage
 
-HEADER_ON_PLACE_WALL_ITEM = 108
-
 from wallfurnigui import  Ui_WallFurniUI
 
+HEADER_ON_PLACE_WALL_ITEM = None
+id_original = None
+string_original = None
+string_last = None
+
+# Hide CMD:
+#import ctypes
+#ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
 
 class WallFurni:
     def __init__(self, extension):
+        global HEADER_ON_PLACE_WALL_ITEM
+        with open('header.txt', 'r') as file:
+            HEADER_ON_PLACE_WALL_ITEM = int(file.read().replace('\n', ''))
         self.__extension = extension
         self.furni_id = 0
         self.z = 0
@@ -45,7 +54,16 @@ class WallFurni:
         sys.exit(self.__app.exec_())
 
     def __on_place_wall_item(self, message: HMessage):
-        (self.furni_id, self.z, self.x, self.depth, self.y, self.orientation) = message.packet.read("liiiis")
+        global id_original
+        global string_original
+
+        (self.furni_id, string) = message.packet.read("is")
+        id_original = self.furni_id
+        string_original = string
+        string = string.replace(":w=", "").replace("l=", "").split(" ")
+        string = ",".join(string).split(",")
+        self.z, self.x, self.depth, self.y, self.orientation = string
+
         self.log(
             f'<PlaceWallitem> [{self.furni_id}] - Z: {self.z} - X: {self.x} - D: {self.depth} - Y: {self.y} - '
             f'orientation: {self.orientation}')
@@ -54,9 +72,10 @@ class WallFurni:
         message.is_blocked = self.__block
 
     def __place_wall_item(self, furni, z, x, depth, y, orientation):
-        self.__extension \
-            .send_to_server('{l}{h:' + str(HEADER_ON_PLACE_WALL_ITEM) + '}{l:' + str(furni) + '}{i:' + str(x) + '}{i:' + str(
-                z) + '}{i:' + str(depth) + '}{i:' + str(y) + '}{s:"' + str(orientation) + '"}')
+        global string_last
+        string_last = ':w='+str(z)+','+str(x)+' l='+str(depth)+','+str(y)+' '+str(orientation)
+        self.__extension.send_to_server('{l}{h:'+str(HEADER_ON_PLACE_WALL_ITEM)+'}{i:'+str(furni)+'}{s:":w='+str(z)+','+str(x)+' l='+str(depth)+','+str(y)+' '+str(orientation)+'"}')
+
 
     def __refresh_wall_item_position(self):
         self.__place_wall_item(self.furni_id, self.z, self.x, self.depth, self.y, self.orientation)
@@ -78,7 +97,10 @@ class WallFurni:
         return self
 
     def set_depth(self, depth: int):
-        self.depth = depth
+        if(depth <= 32):
+            self.depth = depth
+        else:
+            self.depth = 32
         self.__refresh_wall_item_position()
         return self
 
@@ -91,6 +113,20 @@ class WallFurni:
         self.orientation = orientation
         self.__refresh_wall_item_position()
         return self
+
+    def reset(self):
+        global string_original
+        string = string_original.replace(":w=", "").replace("l=", "").split(" ")
+        string = ",".join(string).split(",")
+        self.z, self.x, self.depth, self.y, self.orientation = string
+        self.__refresh_wall_item_position()
+
+    def move_to_last(self):
+        global string_last
+        string = string_last.replace(":w=", "").replace("l=", "").split(" ")
+        string = ",".join(string).split(",")
+        self.z, self.x, self.depth, self.y, self.orientation = string
+        self.__refresh_wall_item_position()
 
     def log(self, message):
         if self.__verbose:
