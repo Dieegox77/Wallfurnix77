@@ -1,3 +1,10 @@
+TODO:
+- Click to update header
+- Photo auto align
+- Mouse wheel support
+
+---
+
 # wallfurni_py
 G-Earth extension to move wall furni everywhere for G-Python
 
