@@ -1,12 +1,7 @@
-TODO:
-- Click to update header
-- Photo auto align
-- Mouse wheel support
+
+![alt text](https://i.imgur.com/PgupLUj.png)
 
 ---
-
-# wallfurni_py
-G-Earth extension to move wall furni everywhere for G-Python
 
 ## How to use
 
@@ -19,3 +14,4 @@ Note: the commands may vary depending on your system!
 
 That's it!  
 Now just move any wall furniture in your room and the values will load in the graphical user interface.
+
