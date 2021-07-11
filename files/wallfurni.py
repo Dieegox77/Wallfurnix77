@@ -63,6 +63,9 @@ class WallFurni:
         self.__ui.emitRefresh()
         message.is_blocked = self.__block
 
+        #self.y = int(self.y) -115
+        #self.__place_wall_item(self.furni_id, self.z, self.x, self.depth, self.y, self.orientation)
+
     def __place_wall_item(self, furni, z, x, depth, y, orientation):
         global string_last
         string_last = ':w='+str(z)+','+str(x)+' l='+str(depth)+','+str(y)+' '+str(orientation)
@@ -131,22 +134,6 @@ class WallFurni:
         self.y = int(self.y) + 32
         self.__refresh_wall_item_position()
 
-
-
-    def check_poster_move(self, message: HMessage):
-        global HEADER_ON_PLACE_WALL_ITEM
-        packet = message.packet
-        print(packet.g_string(self.__extension))
-        if ":w=" and "l=" in str(packet.g_string(self.__extension)):
-            HEADER_ON_PLACE_WALL_ITEM = packet.header_id()
-            print("Found header: ",  HEADER_ON_PLACE_WALL_ITEM)
-            f = open("header.txt", "w")
-            f.write(str(HEADER_ON_PLACE_WALL_ITEM))
-            f.close()
-
-    def update_header(self):
-        print("Waiting for poster move...")
-        self.__extension.intercept(Direction.TO_SERVER, self.check_poster_move)
 
     def log(self, message):
         if self.__verbose:
